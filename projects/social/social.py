@@ -47,6 +47,14 @@ class SocialGraph:
         # Add users
 
         # Create friendships
+        # generate all possible friendship combinations
+
+        # avoid duplicates by ensuring first num < second num
+
+        # shuffle friendships
+
+        # create friendships from the first N pairs of the list
+        # N -> num_users * avg_friendships // 2
 
     def get_all_social_paths(self, user_id):
         """
