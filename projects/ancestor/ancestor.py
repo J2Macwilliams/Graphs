@@ -45,16 +45,14 @@ def earliest_ancestor(ancestors, starting_node):
         path = s.pop()
         # grab the last item from path
         v = path[-1]
-        # check to see if v has ancestors
-            # if not return v
+        
         # check if it has been visited
         if v not in visited:
             # if not add to visited
             visited.add(v)
+            # append path to paths list as a list
             paths.append(path)
-        # print('v',v)
-        # print('lineage',lineage.get_neighbors(v))
-        # find neighbors of the vertex
+        
             for next_v in lineage.get_neighbors(v):
                 # make a copy of the path
                 path_copy = list(path)
@@ -63,19 +61,21 @@ def earliest_ancestor(ancestors, starting_node):
                 paths.append(path_copy)
                 # push copy onto Stack
                 s.push(path_copy)
-    print(paths)
+    # create a list of the len of each path
     paths_len = [len(x) for x in paths]
+    # create list for comparing same length paths
     same = []
+    # find the max length of the paths
     paths_max = max(paths_len)
     # check for if there are no parents         
     if paths_max == 1:
         return -1
     else:
+        # loop thru paths
         for p in paths:
+            # for max path append oldest ancestor as single item
             if len(p) == paths_max:
                 same.append(p[-1])
         return min(same)
 
 
-test_ancestors = [(1, 3), (2, 3), (3, 6), (5, 6), (5, 7), (4, 5), (4, 8), (8, 9), (11, 8), (10, 1)]
-print(earliest_ancestor(test_ancestors, 1)
