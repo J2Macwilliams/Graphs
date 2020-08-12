@@ -1,5 +1,7 @@
 import random
 
+from util import Stack
+
 class User:
     def __init__(self, name):
         self.name = name
@@ -84,8 +86,31 @@ class SocialGraph:
 
         The key is the friend's ID and the value is the path.
         """
+        # use a DFS -> for shortest path
+        # key is the visited, value is the path to get to visited
+        s = Stack()
+        s.push([user_id])
         visited = {}  # Note that this is a dictionary, not a set
-        # !!!! IMPLEMENT ME
+        # Create a loop to check stack size
+        while s.size() > 0:
+            # pop the first Path
+            path = s.pop()
+            # grab the last vertex from the Path
+            key = path[-1]
+
+            # check if the key is in visited
+            if key not in visited:
+                visited[key] = path
+
+                # loop thru to get neighbors
+                for friend in self.friendships[key]:
+                    # make a copy of the path
+                    path_copy = list(path)
+                    # append the friend to the copy
+                    path_copy.append(friend)
+                    # push the copy onto the Stack
+                    s.push(path_copy)
+
         return visited
 
 
