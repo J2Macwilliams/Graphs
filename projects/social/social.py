@@ -113,6 +113,11 @@ class SocialGraph:
 
         return visited
 
+def my_sum(*my_integers):
+    result = 0
+    for x in my_integers:
+        result += x
+    return result
 
 if __name__ == '__main__':
     sg = SocialGraph()
@@ -120,3 +125,12 @@ if __name__ == '__main__':
     print(sg.friendships)
     connections = sg.get_all_social_paths(1)
     print(connections)
+    # logic for answering questions
+    # v = connections.values()
+    # len_v = [len(x) for x in v]
+    # print(len_v)
+    # sum_avglen = my_sum(*len_v)
+    # print( sum_avglen // 10)
+
+    
+    
