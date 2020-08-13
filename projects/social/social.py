@@ -86,7 +86,7 @@ class SocialGraph:
 
         The key is the friend's ID and the value is the path.
         """
-        # use a DFS -> for shortest path
+        # use a DFT -> for shortest path
         # key is the visited, value is the path to get to visited
         s = Stack()
         s.push([user_id])
@@ -113,11 +113,12 @@ class SocialGraph:
 
         return visited
 
-def my_sum(*my_integers):
-    result = 0
-    for x in my_integers:
-        result += x
-    return result
+# my tests to figure out Questions
+# def my_sum(*my_integers):
+#     result = 0
+#     for x in my_integers:
+#         result += x
+#     return result
 
 if __name__ == '__main__':
     sg = SocialGraph()
@@ -125,6 +126,7 @@ if __name__ == '__main__':
     print(sg.friendships)
     connections = sg.get_all_social_paths(1)
     print(connections)
+    
     # logic for answering questions
     # v = connections.values()
     # len_v = [len(x) for x in v]
